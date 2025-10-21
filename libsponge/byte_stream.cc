@@ -18,10 +18,7 @@ size_t ByteStream::write(const string &data) {
 
     size_t original_size = this->_write_bytes;
     for (char ch : data) {
-        if (ch == EOF){
-            this->end_input();
-            break;
-        } else if (this->remaining_capacity() > 0) {
+        if (this->remaining_capacity() > 0) {
             this->_buffer.push_back(ch);
             this->_write_bytes++;
         } else {
